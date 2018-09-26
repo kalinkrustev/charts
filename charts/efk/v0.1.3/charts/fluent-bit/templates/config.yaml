@@ -123,7 +123,9 @@ data:
         Time_Format {{ .timeFormat }}
 {{- end }}
 {{- if .decodeFieldAs  }}
-        Decode_Field_As {{ .decodeFieldAs }} {{ .decodeField | default "log" }}
+{{- range .decodeFieldAs }}
+        Decode_Field_As {{ .decoder }} {{ .name | default "log" }} {{ .action }}
+{{- end }}
 {{- end }}
 {{ end }}
 {{- end }}
